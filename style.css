@@ -1,0 +1,108 @@
+:root {
+  --text: #040316;
+  --background: #fbfbfe;
+  --primary: #2f27ce;
+  --secondary: #dddbff;
+  --accent: #e18d5c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  font-family: "Roboto Mono", sans-serif;
+}
+
+button {
+  outline: 0;
+  border: 0;
+}
+
+span.material-symbols-outlined {
+  font-size: 3rem;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--text);
+  width: 400px;
+  height: 600px;
+  padding: 24px;
+  border-radius: 32px;
+  gap: 32px;
+}
+
+.screen {
+  width: 100%;
+  background-color: var(--secondary);
+  text-align: right;
+  font-size: 5rem;
+  border-radius: 12px;
+  display: flex;
+  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.75) inset;
+  -webkit-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.75) inset;
+  -moz-box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.75) inset;
+  justify-content: flex-end;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.top-btns {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.top-btns .btn {
+  flex-grow: 1;
+  background-color: #9775A9;
+}
+
+.btn {
+  color: #000000;
+  background-color: var(--secondary);
+  height: 70px;
+  flex: 1 0 80px;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn.op {
+  background-color: #2292A4;
+}
+
+.btn.equals {
+  background-color: #CD533B;
+}
