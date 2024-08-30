@@ -2,10 +2,28 @@ let num1 = 5;
 let num2 = 7;
 let operator = "/";
 
-const buttons = document.querySelectorAll(".btn:not(.equals)");
+const buttons = document.querySelectorAll(".btn:not(.equals):not(.op)");
+
+const equals = document.querySelector(".btn.equals");
+
+const operators = document.querySelector(".btn.op");
+
+const screen = document.querySelector(".screen-text");
+
+let screenText = "";
+
+const addChar = (e) => {
+  console.log(e.target.textContent);
+  if (screenText.length < 9) {
+    screenText += e.target.textContent;
+    screen.textContent = screenText;
+  }
+  console.log(screenText);
+  console.log(screen.textContent.length);
+};
 
 buttons.forEach((btn) => {
-  btn.textContent
+  btn.addEventListener("click", addChar);
 });
 
 const add = (num1, num2) => {
