@@ -65,6 +65,7 @@ const operate = (num1, operator, num2) => {
   value2 = "";
   operator = "";
   console.log(result);
+  console.log(operator);
 };
 
 const typeOnScreen = (e) => {
@@ -90,6 +91,10 @@ const handleOperatorClick = (e) => {
   if (value1 === "") {
     value1 = "0";
   }
+  //Evaluates result if operator is clicked twice before equals
+  if (value1 && value2) {
+    result = operate(parseFloat(value1), operator, parseFloat(value2));
+  }
   let op = e.target.getAttribute("data-key");
   operator = op;
   console.log("val1: " + value1);
@@ -113,7 +118,9 @@ operators.forEach((op) => {
 });
 
 equals.addEventListener("click", () => {
-  operate(parseFloat(value1), operator, parseFloat(value2));
+  if (value1 && value2) {
+    operate(parseFloat(value1), operator, parseFloat(value2));
+  }
 });
 
 clearBtn.addEventListener("click", handleClear);
