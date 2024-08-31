@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll(
-  ".btn:not(.equals):not(.op):not(.clear)"
+  ".btn:not(.equals):not(.op):not(.clear):not(.backspace)"
 );
 
 const equals = document.querySelector(".btn.equals");
@@ -109,6 +109,28 @@ const handleClear = () => {
   result = "";
 };
 
+const handleBackspace = () => {
+  if (operator === "") {
+    if (value1.length > 1) {
+      value1 = value1.substring(0, value1.length - 1);
+      screen.textContent = value1;
+      console.log(`value1 ${value1}`);
+    } else {
+      value1 = "";
+      screen.textContent = "0";
+    }
+  } else {
+    if (value2.length > 1) {
+      value2 = value2.substring(0, value2.length - 1);
+      screen.textContent = value2;
+      console.log(`value2 ${value2}`);
+    } else {
+      value2 = "";
+      screen.textContent = "0";
+    }
+  }
+};
+
 buttons.forEach((btn) => {
   btn.addEventListener("click", typeOnScreen);
 });
@@ -124,3 +146,5 @@ equals.addEventListener("click", () => {
 });
 
 clearBtn.addEventListener("click", handleClear);
+
+backspace.addEventListener("click", handleBackspace);
