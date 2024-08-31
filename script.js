@@ -12,6 +12,8 @@ const backspace = document.querySelector(".btn.backspace");
 
 const clearBtn = document.querySelector(".btn.clear");
 
+const decimalBtn = document.querySelector(".btn.decimal");
+
 let value1 = "";
 let value2 = "";
 let operator = "";
@@ -81,6 +83,12 @@ const typeOnScreen = (e) => {
       screen.textContent = value2;
     }
   }
+  if (screen.textContent.includes(".")) {
+    decimalBtn.disabled = true;
+  }
+  console.log(screen.textContent);
+  console.log(e.target);
+  console.log(decimalBtn);
   console.log("val1: " + value1);
   console.log("val2: " + value2);
   console.log(operator);
