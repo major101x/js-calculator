@@ -59,7 +59,7 @@ const operate = (num1, operator, num2) => {
       result = divide(num1, num2);
       break;
   }
-  result = roundUp(result);
+  result = isNaN(result) || !isFinite(result) ? "Hey ;)" : roundUp(result);
   screen.textContent = result;
   value1 = result;
   value2 = "";
