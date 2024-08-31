@@ -14,15 +14,15 @@ let operator = "";
 let result = ""
 
 const add = (num1, num2) => {
-  return num1 + num2;
+  return parseFloat((num1 + num2).toFixed(7));
 };
 
 const subtract = (num1, num2) => {
-  return num1 - num2;
+  return parseFloat((num1 - num2).toFixed(7));
 };
 
 const multiply = (num1, num2) => {
-  return num1 * num2;
+  return parseFloat((num1 * num2).toFixed(7));
 };
 
 const divide = (num1, num2) => {
@@ -44,6 +44,7 @@ const operate = (num1, operator, num2) => {
       result = divide(num1, num2);
       break;
   }
+  result = roundUp(result);
   screen.textContent = result;
   value1 = result;
   value2 = "";
