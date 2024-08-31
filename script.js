@@ -1,29 +1,49 @@
 let num1 = 5;
 let num2 = 7;
-let operator = "/";
+let operator = "";
 
 const buttons = document.querySelectorAll(".btn:not(.equals):not(.op)");
 
 const equals = document.querySelector(".btn.equals");
 
-const operators = document.querySelector(".btn.op");
+const operators = document.querySelectorAll(".btn.op");
 
 const screen = document.querySelector(".screen-text");
 
-let screenText = "";
+const backspace = document.querySelector(".btn.backspace");
 
-const addChar = (e) => {
-  console.log(e.target.textContent);
-  if (screenText.length < 9) {
-    screenText += e.target.textContent;
-    screen.textContent = screenText;
+let value1 = "";
+let value2 = "";
+
+const typeOnScreen = (e) => {
+  //Prevents overflowing of calc screen
+  if (screen.textContent.length < 9) {
+    //Stores value1 or value2 depending on if operator was clicked
+    if (operator === "") {
+      value1 += e.target.textContent;
+      screen.textContent = value1;
+    } else {
+      value2 += e.target.textContent;
+      screen.textContent = value2;
+    }
   }
-  console.log(screenText);
-  console.log(screen.textContent.length);
+  console.log("val1: " + value1);
+  console.log("val2: " + value2);
+  console.log(e.target.textContent);
+};
+
+const addOperator = (e) => {
+  let op = e.target.getAttribute("data-key");
+  operator = op;
+  console.log(operator);
 };
 
 buttons.forEach((btn) => {
-  btn.addEventListener("click", addChar);
+  btn.addEventListener("click", typeOnScreen);
+});
+
+operators.forEach((op) => {
+  op.addEventListener("click", addOperator);
 });
 
 const add = (num1, num2) => {
