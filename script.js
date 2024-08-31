@@ -13,6 +13,17 @@ let value2 = "";
 let operator = "";
 let result = ""
 
+const roundUp = (result) => {
+  roundLength = result.toString().length;
+  const newResult =
+    roundLength > 9
+      ? parseFloat(result).toExponential(roundLength / 10)
+      : result;
+  console.log(roundLength);
+  console.log("res: " + newResult);
+  return newResult;
+};
+
 const add = (num1, num2) => {
   return parseFloat((num1 + num2).toFixed(7));
 };
@@ -52,13 +63,13 @@ const operate = (num1, operator, num2) => {
 };
 
 const typeOnScreen = (e) => {
-  //Prevents overflowing of calc screen
-  if (screen.textContent.length < 9) {
-    //Stores value1 or value2 depending on if operator was clicked
-    if (operator === "") {
+  if (operator === "") {
+    if (value1.length < 9) {
       value1 += e.target.textContent;
       screen.textContent = value1;
-    } else {
+    }
+  } else {
+    if (value2.length < 9) {
       value2 += e.target.textContent;
       screen.textContent = value2;
     }
