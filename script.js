@@ -1,7 +1,3 @@
-let num1 = 5;
-let num2 = 7;
-let operator = "";
-
 const buttons = document.querySelectorAll(".btn:not(.equals):not(.op)");
 
 const equals = document.querySelector(".btn.equals");
@@ -14,6 +10,40 @@ const backspace = document.querySelector(".btn.backspace");
 
 let value1 = "";
 let value2 = "";
+let operator = "";
+
+const add = (num1, num2) => {
+  return num1 + num2;
+};
+
+const subtract = (num1, num2) => {
+  return num1 - num2;
+};
+
+const multiply = (num1, num2) => {
+  return num1 * num2;
+};
+
+const divide = (num1, num2) => {
+  return parseFloat((num1 / num2).toFixed(7));
+};
+
+const operate = (num1, operator, num2) => {
+  switch (operator) {
+    case "+":
+      return add(num1, num2);
+      break;
+    case "-":
+      return subtract(num1, num2);
+      break;
+    case "*":
+      return multiply(num1, num2);
+      break;
+    case "/":
+      return divide(num1, num2);
+      break;
+  }
+};
 
 const typeOnScreen = (e) => {
   //Prevents overflowing of calc screen
@@ -51,35 +81,3 @@ operators.forEach((op) => {
   op.addEventListener("click", handleOperatorClick);
 });
 
-const add = (num1, num2) => {
-  return num1 + num2;
-};
-
-const subtract = (num1, num2) => {
-  return num1 - num2;
-};
-
-const multiply = (num1, num2) => {
-  return num1 * num2;
-};
-
-const divide = (num1, num2) => {
-  return parseFloat((num1 / num2).toFixed(7));
-};
-
-const operate = (num1, operator, num2) => {
-  switch (operator) {
-    case "+":
-      return add(num1, num2);
-      break;
-    case "-":
-      return subtract(num1, num2);
-      break;
-    case "*":
-      return multiply(num1, num2);
-      break;
-    case "/":
-      return divide(num1, num2);
-      break;
-  }
-};
