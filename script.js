@@ -1,4 +1,6 @@
-const buttons = document.querySelectorAll(".btn:not(.equals):not(.op)");
+const buttons = document.querySelectorAll(
+  ".btn:not(.equals):not(.op):not(.clear)"
+);
 
 const equals = document.querySelector(".btn.equals");
 
@@ -8,10 +10,12 @@ const screen = document.querySelector(".screen-text");
 
 const backspace = document.querySelector(".btn.backspace");
 
+const clearBtn = document.querySelector(".btn.clear");
+
 let value1 = "";
 let value2 = "";
 let operator = "";
-let result = ""
+let result = "";
 
 const roundUp = (result) => {
   roundLength = result.toString().length;
@@ -59,10 +63,12 @@ const operate = (num1, operator, num2) => {
   screen.textContent = result;
   value1 = result;
   value2 = "";
+  operator = "";
   console.log(result);
 };
 
 const typeOnScreen = (e) => {
+  //Only if operator is clicked
   if (operator === "") {
     if (value1.length < 9) {
       value1 += e.target.textContent;
@@ -76,7 +82,7 @@ const typeOnScreen = (e) => {
   }
   console.log("val1: " + value1);
   console.log("val2: " + value2);
-  console.log(e.target.textContent);
+  console.log(operator);
 };
 
 const handleOperatorClick = (e) => {
@@ -90,6 +96,14 @@ const handleOperatorClick = (e) => {
   console.log(operator);
 };
 
+const handleClear = () => {
+  screen.textContent = "0";
+  value1 = "";
+  value2 = "";
+  operator = "";
+  result = "";
+};
+
 buttons.forEach((btn) => {
   btn.addEventListener("click", typeOnScreen);
 });
@@ -101,3 +115,5 @@ operators.forEach((op) => {
 equals.addEventListener("click", () => {
   operate(parseFloat(value1), operator, parseFloat(value2));
 });
+
+clearBtn.addEventListener("click", handleClear);
