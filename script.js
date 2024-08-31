@@ -11,6 +11,7 @@ const backspace = document.querySelector(".btn.backspace");
 let value1 = "";
 let value2 = "";
 let operator = "";
+let result = ""
 
 const add = (num1, num2) => {
   return num1 + num2;
@@ -31,18 +32,22 @@ const divide = (num1, num2) => {
 const operate = (num1, operator, num2) => {
   switch (operator) {
     case "+":
-      return add(num1, num2);
+      result = add(num1, num2);
       break;
     case "-":
-      return subtract(num1, num2);
+      result = subtract(num1, num2);
       break;
     case "*":
-      return multiply(num1, num2);
+      result = multiply(num1, num2);
       break;
     case "/":
-      return divide(num1, num2);
+      result = divide(num1, num2);
       break;
   }
+  screen.textContent = result;
+  value1 = result;
+  value2 = "";
+  console.log(result);
 };
 
 const typeOnScreen = (e) => {
@@ -65,7 +70,7 @@ const typeOnScreen = (e) => {
 const handleOperatorClick = (e) => {
   //Sets value1 to 0 if operator was clicked first
   if (value1 === "") {
-    value1 = 0;
+    value1 = "0";
   }
   let op = e.target.getAttribute("data-key");
   operator = op;
@@ -81,3 +86,6 @@ operators.forEach((op) => {
   op.addEventListener("click", handleOperatorClick);
 });
 
+equals.addEventListener("click", () => {
+  operate(parseFloat(value1), operator, parseFloat(value2));
+});
