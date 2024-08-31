@@ -32,9 +32,14 @@ const typeOnScreen = (e) => {
   console.log(e.target.textContent);
 };
 
-const addOperator = (e) => {
+const handleOperatorClick = (e) => {
+  //Sets value1 to 0 if operator was clicked first
+  if (value1 === "") {
+    value1 = 0;
+  }
   let op = e.target.getAttribute("data-key");
   operator = op;
+  console.log("val1: " + value1);
   console.log(operator);
 };
 
@@ -43,7 +48,7 @@ buttons.forEach((btn) => {
 });
 
 operators.forEach((op) => {
-  op.addEventListener("click", addOperator);
+  op.addEventListener("click", handleOperatorClick);
 });
 
 const add = (num1, num2) => {
