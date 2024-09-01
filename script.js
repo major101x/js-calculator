@@ -25,8 +25,6 @@ const roundUp = (result) => {
     roundLength > 9
       ? parseFloat(result).toExponential(roundLength / 10)
       : result;
-  console.log(roundLength);
-  console.log("res: " + newResult);
   return newResult;
 };
 
@@ -66,8 +64,6 @@ const operate = (num1, operator, num2) => {
   value1 = result;
   value2 = "";
   operator = "";
-  console.log(result);
-  console.log(operator);
 };
 
 const typeOnScreen = (e) => {
@@ -86,12 +82,6 @@ const typeOnScreen = (e) => {
   if (screen.textContent.includes(".")) {
     decimalBtn.disabled = true;
   }
-  console.log(screen.textContent);
-  console.log(e.target);
-  console.log(decimalBtn);
-  console.log("val1: " + value1);
-  console.log("val2: " + value2);
-  console.log(operator);
 };
 
 const handleOperatorClick = (e) => {
@@ -105,8 +95,6 @@ const handleOperatorClick = (e) => {
   }
   let op = e.target.getAttribute("data-key");
   operator = op;
-  console.log("val1: " + value1);
-  console.log(operator);
 };
 
 const handleClear = () => {
@@ -120,9 +108,9 @@ const handleClear = () => {
 const handleBackspace = () => {
   if (operator === "") {
     if (value1.length > 1) {
+      //Deletes last character on screen
       value1 = value1.substring(0, value1.length - 1);
       screen.textContent = value1;
-      console.log(`value1 ${value1}`);
     } else {
       value1 = "";
       screen.textContent = "0";
@@ -131,7 +119,6 @@ const handleBackspace = () => {
     if (value2.length > 1) {
       value2 = value2.substring(0, value2.length - 1);
       screen.textContent = value2;
-      console.log(`value2 ${value2}`);
     } else {
       value2 = "";
       screen.textContent = "0";
