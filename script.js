@@ -139,6 +139,33 @@ const handleBackspace = () => {
   }
 };
 
+document.addEventListener("keydown", (e) => {
+  buttons.forEach((btn) => {
+    if (e.key === btn.textContent) {
+      btn.click();
+    }
+  });
+  operators.forEach((op) => {
+    if (e.key === op.textContent) {
+      op.click();
+    }
+  });
+  switch (e.key) {
+    case "Backspace":
+      backspace.click();
+      break;
+    case "c":
+      clearBtn.click();
+      break;
+    case ".":
+      decimalBtn.click();
+      break;
+    case "Enter" || "=":
+      equals.click();
+      break;
+  }
+});
+
 buttons.forEach((btn) => {
   btn.addEventListener("click", typeOnScreen);
 });
